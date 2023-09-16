@@ -1,5 +1,5 @@
 import streamlit as st
-from Chains.chain import healthTips
+from Chains.chain import Health
 
 st.title("Docto AI")
 
@@ -27,10 +27,17 @@ language = st.sidebar.selectbox(
 submit = st.sidebar.button('Confirm', type='primary')
 
 if submit:
-    response = healthTips(age, sex, language)
+    health = Health(age, sex, language)
+    response = health.healthTips()
     st.header(f'Health Tips for the age "{age}"')
     tips = response['health_tips'].strip().split('\n\n')
     for tip in tips:
-        st.markdown( tip)
-
+        st.markdown(tip)
     
+    st.subheader('Checkout this......',)
+    urls = health.youtube()
+    # Embed the video
+    col = st.columns(len(urls))
+    for i,url in enumerate(urls):
+        with col[i]:
+            st.video(url)
