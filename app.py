@@ -22,7 +22,7 @@ sex = st.sidebar.selectbox(
     "Gender",['male','female'])
 
 language = st.sidebar.selectbox(
-    "Gender",['English','French','German','Arabic','Malayalam','Hindi'],)
+    "Language",['English','French','German','Arabic','Malayalam','Hindi'],)
 
 submit = st.sidebar.button('Confirm', type='primary')
 
